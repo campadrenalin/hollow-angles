@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hollow Angles</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Cantora+One' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+<div class="header">
+    <h1>Hollow Angles</h1>
+    <p>Like checkers, but triangular and fractal. And with a few extra moves.<p>
+</div>
+
+<div class="description">
+    <p>99.999% of all matter is empty space. Just kidding, mass is even <em>emptier</em> than that, but who's counting? Most games treat each piece on the board as an indivisible atomic element, but what if you could see inside your pieces - move the stuff inside them around, infect enemies, and create superpieces from collections of regular-sized ones?</p>
+
+    <p>
+        <a href="#screenshots">What would that game look like?</a>
+        <a href="#how-to-play">How do you play?</a>
+        <a href="#how-to-win">How do you win?</a>
+    </p>
+
+    <h2 id="screenshots">Screenshots</h2>
+    <p>TODO: Fill me in</p>
+
+    <h2 id="how-to-play">How do you play?</h2>
+    <p>
+        Play happens at multiple "zoom levels" simultaneously. Each space on the board is triangular, and represents its own little "ecosystem" of activity and real estate. A space can be in one of the following possible states:
+
+        <strong class="item">Empty</strong>
+        Pieces on the board can be freely moved into empty spaces.
+
+        <strong class="item">Owned</strong>
+        A single player has a single piece in this space. Implies an internal structure that can be zoomed in on, modified, infected/attacked, etc. A space is only owned if the 3 corner spaces inside it are owned by a single player, and the center place is empty.
+
+        <strong class="item">Conflicted</strong>
+        A space that has one or more players owning parts of it, and does not matched the 3-corners-only pattern of an owned space.
+
+        <strong class="item">Barrier</strong>
+        A barrier cannot be entered, infected, vaulted over, or destroyed. It has a completely solid and immutable internal structure. These are used to define a map at the start of the game - its borders and obstacles - which allows for a variety of strategies and scenarios.
+    </p>
+
+    <p>
+        A player can only move pieces that they own. That means having the internal structure all set up correctly for transport, not having any enemy ownership inside the piece, and so on. The following types of moves are available:
+
+        <strong class="item">Flip</strong>
+        A flip is a single hop from one space to another. This is conceptually accomplished by taking the corner of the triangle, and flipping it over such that the triangle lands in the correct place. You can only flip a piece into an empty space.
+
+        <strong class="item">Capture</strong>
+        You can do a double-hop over an enemy in a single move, as long as you have an empty spot to land in (not counting the one you just left). This destroys the enemy piece. You can string a bunch of captures and vaults in a single move. You cannot capture a conflicted space, but you can vault over it.
+
+        <strong class="item">Vault</strong>
+        A vault is like a capture, except it can only be done via conflicted spaces, and it does not affect the state of the conflicted space you hop over. Thus, you can set up rapid transit with a series of conflicted spaces, establishing a supply chain across large distances. It can also be chained with captures.
+
+        <strong class="item">Explode</strong>
+        Every piece is capable of reproducing into 3 new pieces, each of equal size to the original. However, you can only explode a piece if the spaces for the new pieces (the spaces adjacent at each edge of the original piece) are empty. So if you have the room for it, you can turn a single piece into a superpiece, one zoom level bigger than the original.
+
+        <strong class="item">Suicide</strong>
+        You can voluntarily turn any piece you own into an empty space. Not a move you'll need often, but it can clear up space at just the right moment.
+    </p>
+
+    <p>
+        To play Hollow Angles effectively, you need to be able to think in terms of zoom levels, and switch between them to enact your strategies. This concept is fairly unique, and can take awhile to get your head around - especially because an owned piece is made of owned pieces, which are made of owned pieces, and so on. There is actually no upper or lower limit on zoom levels, unless imposed by the map. You are completely free to zoom in closer and closer on a piece, and see how it is an identical fractal all the way down - <em>forever</em>. It is literally infinite.
+    </p>
+
+    <h2 id="how-to-win">How do you win?</h2>
+    <p>
+        Any player can win at any time, by becoming the only player with any pieces on the board (at any zoom level). However, games are mostly won by tallying up scores at the end of the allotted time (for example, 10 minutes, or 100 moves, etc.), in which case, the player with the most points wins.
+
+        <strong class="item">How are you scored?</strong>
+        Each piece is counted according to how much area it takes up on the board. At Level 0 (no zoom in or out), each piece's area is considered to be 1. Thus, a Level 1 piece (which takes up 1/4 the area of a Level 0 piece) gives 1/4 point. Note that an owned piece is scored higher than the sum of its parts - only 3 out of 4 components are filled, but it's scored as if you have covered the entire area (like a "conflicted" space where you own all the component pieces). This scoring rewards the "owned" state, and provides an additional incentive to create and sustain large pieces, which are easier to infect.
+
+        <strong class="item">So then, an owned piece at Level <em>n</em> is worth...?</strong>
+        (1/4)<sup><em>n</em></sup>. A table is given for visualization purposes.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <td>Level</td>
+                <td>Point value</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>-5 (Zoomed out 5 layers)</td>
+                <td>(1/4)<sup>-5</sup> = 4<sup>5</sup> = 1024</td>
+            </tr>
+            <tr>
+                <td>-4</td>
+                <td>(1/4)<sup>-4</sup> = 4<sup>4</sup> = 256</td>
+            </tr>
+            <tr>
+                <td>-3</td>
+                <td>(1/4)<sup>-3</sup> = 4<sup>3</sup> = 64</td>
+            </tr>
+            <tr>
+                <td>-2</td>
+                <td>(1/4)<sup>-2</sup> = 4<sup>2</sup> = 16</td>
+            </tr>
+            <tr>
+                <td>-1</td>
+                <td>(1/4)<sup>-1</sup> = 4<sup>1</sup> = 4</td>
+            </tr>
+            <tr>
+                <td>0 (Starting zoom)</td>
+                <td>(1/4)<sup>0</sup> = 1</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>(1/4)<sup>1</sup> = 1/4</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>(1/4)<sup>2</sup> = 1/16</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>(1/4)<sup>3</sup> = 1/64</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>(1/4)<sup>4</sup> = 1/256</td>
+            </tr>
+            <tr>
+                <td>5 (Zoomed in 5 layers)</td>
+                <td>(1/4)<sup>5</sup> = 1/1024</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        What about all the pieces <em>within</em> owned pieces? Turns out, we don't really need to care. It doesn't affect the proportions at all - a Level 2 piece is still 4 times the value of a Level 3 piece, for example, even if you were to count descendants' values - so there's no reason <em>not</em> to just pin Level 0 pieces to a value of one, and not care about counting the infinite subpieces.
+    </p>
+</div>
+
+<div class="footer">
+    <a href="https://github.com/campadrenalin/hollow-angles">Fork me on Github</a>
+    &nbsp;|&nbsp;
+    <a href="http://gplv3.fsf.org/">Licensed GPLv3</a>
+    &nbsp;|&nbsp;
+    Powered by <a href="http://golang.org/">Go</a> and <a href="https://github.com/codegangsta/martini">Martini</a>
+</div>
+</body>
+</html>

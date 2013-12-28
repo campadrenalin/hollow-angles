@@ -1,0 +1,58 @@
+body {
+    font-family: 'Cantora One', sans-serif;
+    color: white;
+    background-color: #1e771d;
+
+    margin: 0px;
+}
+
+a         { color: #d7d189; }
+a:active  { color: red; }
+a:hover   { color: #ffc547; }
+a:visited { color: #deaf4b; }
+a:focus   { color: black; }
+
+.header {
+    background-color: #30c12f;
+    padding: 15px;
+}
+
+.description {
+    margin: 10px;
+}
+
+.description p {
+    border-left: 10px solid #134a12;
+    padding: 10px;
+}
+
+.footer {
+    border-top: 1px solid #30c12f;
+    padding-top: 10px;
+    margin: 20px;
+    text-align: center;
+}
+
+strong.item {
+    display: block;
+    padding-left: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+    background-image: url(/images/icon.png);
+    background-repeat: no-repeat;
+    background-size: 1em;
+    background-position: 2px 2px;
+}
+
+.description table {
+    margin-left: 30px;
+    border-collapse: collapse;
+}
+.description table, .description td {
+    border: 2px solid #134a12;
+    padding: 5px;
+}
+.description thead {
+    background-color: #30c12f;
+}
